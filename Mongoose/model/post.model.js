@@ -1,10 +1,10 @@
 const mongoose=require("mongoose");
 
 const postShema=new mongoose.Schema({
-    PostBy:{
+    postBy:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
-        requried:true,
+        required:true,
     },
     caption:{
         type:String,
@@ -28,10 +28,10 @@ const postShema=new mongoose.Schema({
     //     type:Number,
     //     default:0
     // },
-    // isPublic:{
-    //     type:Boolean,
-    //     default:true,
-    // },
+    isPublic:{
+        type:Boolean,
+        default:true,
+    },
     // comments:{
     //     user:{
     //         type:mongoose.Schema.Types.ObjectId,
