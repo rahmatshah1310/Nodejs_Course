@@ -16,37 +16,37 @@ const postShema=new mongoose.Schema({
             required:true,
         }
     ],
-    // likes:[{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref:"User",
-    // }],
-    // likeCount:{
-    //     type:Number,
-    //     default:0
-    // },
-    // commentCount:{
-    //     type:Number,
-    //     default:0
-    // },
+    likes:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+    }],
+    likeCount:{
+        type:Number,
+        default:0
+    },
+    commentCount:{
+        type:Number,
+        default:0
+    },
     isPublic:{
         type:Boolean,
         default:true,
     },
-    // comments:{
-    //     user:{
-    //         type:mongoose.Schema.Types.ObjectId,
-    //         ref:"User",
-    //         required:true,
-    //     },
-    //     comments:{
-    //         type:String,
-    //         required:true,
-    //     },
-    //     createdAt:{
-    //         type:Date,
-    //         default:Date.now,
-    //     }
-    // }
+    comments:[{
+        user:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User",
+            required:true,
+        },
+        comment:{
+            type:String,
+            required:true,
+        },
+        createdAt:{
+            type:Date,
+            default:Date.now,
+        }
+    }]
 },
 {timestamps:true}
 )
