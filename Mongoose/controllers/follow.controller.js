@@ -70,6 +70,7 @@ module.exports.unfollowUser = async (req, res) => {
 module.exports.getfollower = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id, "id in the followercontroller");
     const updateFollower = await FollowService.getfollowers(id);
     console.log(
       updateFollower,
