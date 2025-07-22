@@ -40,7 +40,6 @@ module.exports.unfollowUser = async (req, res) => {
     const { targetUserId } = req.params;
 
     const targetUser = await User.findById(targetUserId);
-    console.log(targetUser, "targetUser..........................");
     if (!targetUser) {
       return res.status(404).json({
         message: "The user you are trying to unfollow does not exist ",
@@ -69,19 +68,65 @@ module.exports.unfollowUser = async (req, res) => {
 
 module.exports.getfollower = async (req, res) => {
   try {
-    const { id } = req.params;
-    console.log(id, "id in the followercontroller");
-    const updateFollower = await FollowService.getfollowers(id);
-    console.log(
-      updateFollower,
-      "updatefollower,........................................."
-    );
+    const userId = req.user._id;
+    const followers = await FollowService.getfollowers(userId);
     return res.status(200).json({
       message: "Get Follower Succesfully",
-      data: updateFollower,
+      data: followers,
     });
   } catch (error) {
     console.error("FollowController [getfollower] Error", error);
+    return res.status(500).json({
+      status: "error",
+      message: "Internal Server Error",
+    });
+  }
+};
+
+module.exports.getfollowing = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const following = await FollowService.getfollowing(userId);
+    return res.status(200).json({
+      message: "Get following Succesfully",
+      data: following,
+    });
+  } catch (error) {
+    console.error("FollowController [getfollowing] Error", error);
+    return res.status(500).json({
+      status: "error",
+      message: "Internal Server Error",
+    });
+  }
+};
+
+module.exports.getfollowerofUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const followers = await FollowService.getfollowersofAnotherUser(id);
+    return res.status(200).json({
+      message: "Get Follower Succesfully",
+      data: followers,
+    });
+  } catch (error) {
+    console.error("FollowController [getfollowerofUser] Error", error);
+    return res.status(500).json({
+      status: "error",
+      message: "Internal Server Error",
+    });
+  }
+};
+
+module.exports.getfollowingofUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const following = await FollowService.getfollowingofAnotherUser(id);
+    return res.status(200).json({
+      message: "Get following Succesfully",
+      data: following,
+    });
+  } catch (error) {
+    console.error("FollowController [getfollowingofUser] Error", error);
     return res.status(500).json({
       status: "error",
       message: "Internal Server Error",
