@@ -52,6 +52,12 @@ const userSchema = new mongoose.Schema({
   ],
   forgotPasswordCode: { type: Number, default: null },
   passwordResetCodeExpiry: { type: Date, default: null },
+  stories: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Story",
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
