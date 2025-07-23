@@ -23,7 +23,6 @@ module.exports.getAllArchives = async (req, res) => {
   try {
     const userId = req.user._id;
     const archives = await StoryService.getAllArchives(userId);
-    console.log(archives, "archives..................................");
     if (!archives || archives.length === 0) {
       return res.status(404).json({ message: "No Archives Found" });
     }
@@ -41,7 +40,6 @@ module.exports.getAllStories = async (req, res) => {
   try {
     const userId = req.user._id;
     const allStories = await StoryService.getUserStories(userId);
-    console.log(allStories, "allStories..................................");
 
     return res
       .status(200)
@@ -56,7 +54,6 @@ module.exports.deleteStory = async (req, res) => {
   try {
     const { id } = req.params;
     const deleted = await StoryService.deleteStory(id, req.user._id);
-    console.log(deleted, "deleted..................................");
     if (!deleted) {
       return res.status(404).json({ message: "Story not found." });
     }
@@ -64,6 +61,23 @@ module.exports.deleteStory = async (req, res) => {
     return res.status(200).json({ message: "Story Deleted Succesfully" });
   } catch (error) {
     console.error("StoryController [deleteStory] Error", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+module.exports.getstoriesOfFollowing = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const stories = await StoryService.getstoriesOfFollowing(userId);
+    if (!stories || stories.length === 0) {
+      return res.status(404).json({ message: "Story not found." });
+    }
+
+    return res
+      .status(200)
+      .json({ message: "Story reterived Succesfully", stories });
+  } catch (error) {
+    console.error("StoryController [getstoriesOfFollowing] Error", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
