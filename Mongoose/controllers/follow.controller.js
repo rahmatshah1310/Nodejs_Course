@@ -7,7 +7,6 @@ module.exports.followUser = async (req, res) => {
     const { targetUserId } = req.params;
 
     const targetUser = await User.findById(targetUserId);
-    console.log(targetUser);
     if (!targetUser) {
       return res
         .status(404)
