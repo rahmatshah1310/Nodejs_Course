@@ -229,7 +229,6 @@ module.exports.deleteComment = async (req, res) => {
         message: "Post or comment not found",
       });
     }
-    console.log(updatePost);
 
     return res.status(200).json({
       message: "Comment Deleted Succesfully",
