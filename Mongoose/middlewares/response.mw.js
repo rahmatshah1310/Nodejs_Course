@@ -1,11 +1,11 @@
-module.exports=(req,res,next)=>{
-    res.success=(data)=>{
-        res.status(200).json({status:'success',data})
-    }
-
-     res.fail = (data) => {  
-    res.status(400).json({ status: 'fail', data });
+module.exports = (req, res, next) => {
+  res.success = (data) => {
+    res.status(200).json({ status: "success", data });
   };
 
-  next()
-}
+  res.fail = (data) => {
+    res.status(400).json({ status: "fail", data });
+  };
+
+  next();
+};
