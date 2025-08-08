@@ -8,6 +8,6 @@ exports.mongooseConnection=async()=>{
             console.log(`Succesfully Connected to the MongoDB`)
         })
     } catch (error) {
-        console.error("Unable to connect to the database",error)
+            console.error("Unable to connect to the database",error)
     }
 }
