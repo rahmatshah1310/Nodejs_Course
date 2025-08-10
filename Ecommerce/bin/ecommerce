@@ -1,6 +1,6 @@
 
 var app=require('../app')
-var debug=require('debug')('instagram:server');
+var debug=require('debug')('ecommerce:server');
 var http=require('http')
 
 var port=normalizePort(process.env.PORT)
