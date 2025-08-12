@@ -52,10 +52,14 @@ app.use("/api/v1", require("./routes/index"));
 
 mongooseConnection();
 
-//handle page not found
-app.use(function (err, req, res, next) {
-  console.log("Page Not Found");
-  // res.fail("Page Not Found")
+// after all your routes
+app.use((req, res, next) => {
+  res.status(404).send("Page Not Found");
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Internal Server Error");
 });
 
 module.exports = app;
