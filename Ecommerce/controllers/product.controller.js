@@ -19,6 +19,7 @@ module.exports.createProduct = async (req, res) => {
 
     return res.success(product);
   } catch (error) {
+    console.error("ProductController [createProduct] Error", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -28,6 +29,7 @@ module.exports.getAllProducts = async (req, res) => {
     const products = await ProductService.getAllProducts();
     return res.success(products);
   } catch (error) {
+    console.error("ProductController [getAllProducts] Error", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -41,6 +43,7 @@ module.exports.getProductById = async (req, res) => {
 
     return res.success(product);
   } catch (error) {
+    console.error("ProductController [getProductById] Error", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -56,6 +59,7 @@ module.exports.updateProduct = async (req, res) => {
 
     return res.success(updatedProduct);
   } catch (error) {
+    console.error("ProductController [updateProduct] Error", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -69,6 +73,7 @@ module.exports.deleteProduct = async (req, res) => {
 
     return res.success({ message: "Product deleted successfully" });
   } catch (error) {
+    console.error("ProductController [deleteProduct] Error", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -78,6 +83,7 @@ module.exports.getAllCategories = async (req, res) => {
     const categories = await ProductService.getAllCategories();
     return res.success(categories);
   } catch (error) {
+    console.error("ProductController [getAllCategories] Error", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -87,6 +93,7 @@ module.exports.getAllSizes = async (req, res) => {
     const sizes = await ProductService.getAllSizes();
     return res.success(sizes);
   } catch (error) {
+    console.error("ProductController [getAllSizes] Error", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -102,6 +109,7 @@ module.exports.getProductsByCategory = async (req, res) => {
     const products = await ProductService.getProductsByCategory(categoryName);
     return res.success(products);
   } catch (error) {
+    console.error("ProductController [getProductByCateogory] Error", error);
     return res.status(500).json({ success: false, message: error.message });
   }
 };
@@ -117,6 +125,7 @@ module.exports.getProductsBySize = async (req, res) => {
     const products = await ProductService.getProductsBySize(size);
     return res.success(products);
   } catch (error) {
+    console.error("ProductController [GetProductsBySize] Error", error);
     return res.status(500).json({ success: false, message: error.message });
   }
 };
