@@ -7,7 +7,10 @@ module.exports.ensureAuthenticated = async (req, res, next) => {
   if (!token) return res.fail("Unauthorized");
 
   try {
-    const decoded = jwt.verify(token.replace("Bearer ", ""), process.env.JWT_SECRET);
+    const decoded = jwt.verify(
+      token.replace("Bearer ", ""),
+      process.env.JWT_SECRET
+    );
 
     const user = await UserService.readById(decoded.id);
 
@@ -15,6 +18,7 @@ module.exports.ensureAuthenticated = async (req, res, next) => {
 
     req.user = user;
     return next();
+
   } catch (err) {
     console.log(err);
     return res.fail("Unauthorized");
