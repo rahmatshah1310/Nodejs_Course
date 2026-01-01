@@ -24,27 +24,27 @@ module.exports.uploadStory = async (req, res) => {
   }
 };
 
-// module.exports.getAllArchives = async (req, res) => {
-//   try {
-//     const userId = req.user._id;
-//     const archives = await StoryService.getAllArchives(userId);
-//     if (!archives || archives.length === 0) {
-//       return res.status(404).json({
-//         message: "No Archives Found",
-//       });
-//     }
+module.exports.getAllArchives = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const archives = await StoryService.getAllArchives(userId);
+    if (!archives || archives.length === 0) {
+      return res.status(404).json({
+        message: "No Archives Found",
+      });
+    }
 
-//     return res.status(200).json({
-//       message: "Archives reterived succesfully",
-//       archives,
-//     });
-//   } catch (error) {
-//     console.error("StoryController [getAllArchives] Error", error);
-//     return res.status(500).json({
-//       message: "Internal Server Error",
-//     });
-//   }
-// };
+    return res.status(200).json({
+      message: "Archives reterived succesfully",
+      archives,
+    });
+  } catch (error) {
+    console.error("StoryController [getAllArchives] Error", error);
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
 
 module.exports.getAllStories = async (req, res) => {
   try {
