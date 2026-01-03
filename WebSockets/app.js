@@ -7,12 +7,12 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-// send to single user
-// io.on("connection", (socket) => {
-//   socket.on("chat message", (msg) => {
-//     console.log("message: " + msg);
-//   });
-// });
+send to single user
+io.on("connection", (socket) => {
+  socket.on("chat message", (msg) => {
+    console.log("message: " + msg);
+  });
+});
 
 //In this case, for the sake of simplicity we’ll send the message to everyone, including the sender.
 io.on("connection", (socket) => {
