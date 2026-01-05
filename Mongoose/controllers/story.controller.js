@@ -46,22 +46,22 @@ module.exports.getAllArchives = async (req, res) => {
   }
 };
 
-// module.exports.getAllStories = async (req, res) => {
-//   try {
-//     const userId = req.user._id;
-//     const allStories = await StoryService.getUserStories(userId);
+module.exports.getAllStories = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const allStories = await StoryService.getUserStories(userId);
 
-//     return res.status(200).json({
-//       message: "AllStories Get succesfully",
-//       stories: allStories,
-//     });
-//   } catch (error) {
-//     console.error("StoryController [getAllArchives] Error", error);
-//     return res.status(500).json({
-//       message: "Internal Server Error",
-//     });
-//   }
-// };
+    return res.status(200).json({
+      message: "AllStories Get succesfully",
+      stories: allStories,
+    });
+  } catch (error) {
+    console.error("StoryController [getAllArchives] Error", error);
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
 
 module.exports.deleteStory = async (req, res) => {
   try {
