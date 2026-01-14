@@ -14,7 +14,6 @@ io.on("connection", (socket) => {
   });
 });
 
-//In this case, for the sake of simplicity we’ll send the message to everyone, including the sender.
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
     io.emit("chat message", msg);
