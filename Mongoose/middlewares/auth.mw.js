@@ -20,7 +20,6 @@ module.exports.ensureAuthenticated = async (req, res, next) => {
     return next();
 
   } catch (err) {
-    console.log(err);
     return res.fail("Unauthorized");
   }
 };
