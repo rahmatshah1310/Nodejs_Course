@@ -7,15 +7,15 @@ const p = path.join(
   "products.json",
 );
 
-// const getProductsFromFile = cb => {
-//   fs.readFile(p, (err, fileContent) => {
-//     if (err) {
-//       cb([]);
-//     } else {
-//       cb(JSON.parse(fileContent));
-//     }
-//   });
-// };
+const getProductsFromFile = (cb) => {
+  fs.readFile(p, (err, fileContent) => {
+    if (err) {
+      cb([]);
+    } else {
+      cb(JSON.parse(fileContent));
+    }
+  });
+};
 
 module.exports = class Product {
   constructor(title, imageUrl, description, price) {
